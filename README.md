@@ -30,7 +30,21 @@ laravelを用いたecサイト
 ``` ./vendor/bin/sail artisan migrate ```
 - データベースシーディングを実行します。
 ``` ./vendor/bin/sail artisan db:seed ```
+- npmをインストールします。
+``` npm install ```
+- npmを起動します。
+``` npm run dev ```
+-シンボリックの設定します。
+``` ./vendor/bin/sail artisan storage:link ```
+- シーダーの画像を表示するためにpublicフォルダのbook.pngをstorage/app/public/imagesに移動させてください
 
 ## ブラウザ
 トップページ：http://localhost
 管理者ページログイン：https://localhost/admin/login
+
+ユーザー
+'email' => test@example.com
+'password' = testpassword
+管理者ユーザー
+'email' = admintest@example.com
+'password' = testpassword

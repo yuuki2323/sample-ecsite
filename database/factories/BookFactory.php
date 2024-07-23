@@ -20,7 +20,7 @@ class BookFactory extends Factory
             'category_id' => Category::factory(),
             'title' => $this->faker->sentence,
             'description' => $this->faker->paragraph,
-            'image_path' => 'public/book.png',
+            'image_path' => 'images/book.png',
             'price' => $this->faker->numberBetween(1000, 5000),
             'stock' => $this->faker->numberBetween(0, 30),
             'status' => $this->faker->randomElement(['in_stock', 'soldout']),
