@@ -17,7 +17,7 @@ class CategoryFactory extends Factory
         $name = 'category';
         return [
             'name' => $name,
-            'slug' =>Str::srug($name),
+            'slug' =>Str::slug($name),
         ];
     }
 }

@@ -19,11 +19,13 @@ laravelを用いたecサイト
     laravelsail/php82-composer:latest \
     composer install --ignore-platform-reqs
 ```
+** .env 作成 **
+``` cp .env.example .env ```
 ** Docker コンテナ・ビルド起動 **
 - Dockerコンテナをバックグラウンドで起動します。
 ``` ./vendor/bin/sail up -d ```
-- Dockerコンテナ内でComposerを使用して依存関係をインストールします。
-``` ./vendor/bin/sail composer install ```
+- アプリキー作成します。
+``` ./vendor/bin/sail artisan key:generate ```
 - データベースのマイグレーションを実行します。
 ``` ./vendor/bin/sail artisan migrate ```
 - データベースシーディングを実行します。
