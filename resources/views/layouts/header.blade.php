@@ -27,8 +27,8 @@
             @auth
                 <div class="flex gap-4 items-center">
                     <a href="{{ route('profile.show') }}"
-                        class="px-4 py-2 border-2 border-green-400 rounded font-semibold text-green-400">マイページ</a>
-                    <span class="font-semibold">{{ Auth::user()->name }}</span>
+                        class="px-4 py-2 border-2 border-green-400 rounded font-semibold text-green-400"><span class="font-semibold">{{ Auth::user()->name }}</span>のマイページ</a>
+                    
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button type="submit" class="bg-red-500 px-4 py-2 rounded font-semibold text-white text-center">ログアウト</button>

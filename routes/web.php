@@ -1,15 +1,18 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminBookController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
+use App\Http\Controllers\Admin\ReviewManagementController;
 use App\Http\Controllers\AdminAuth\AdminNewPasswordController;
 use App\Http\Controllers\AdminAuth\AdminPasswordResetLinkController;
 use App\Http\Controllers\AdminAuthController;
-use App\Http\Controllers\Admin\BookController;
+use App\Http\Controllers\BookController ;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +27,13 @@ Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('categ
 Route::get('/search', [SearchController::class, 'search'])->name('search');
 
 Route::get('/books/{book}', [BookController::class, 'show'])->name('books.show');
+
+Route::middleware('auth')->group(function () {
+    Route::post('/books/{book}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
+    Route::get('/reviews/{review}/edit', [ReviewController::class, 'edit'])->name('reviews.edit');
+    Route::patch('/reviews/{review}', [ReviewController::class, 'update'])->name('reviews.update');
+    Route::delete('/reviews/{review}', [ReviewController::class, 'destroy'])->name('reviews.destroy');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
@@ -45,12 +55,15 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/', function () {
             return view('admin.dashboard');
         })->name('dashboard');
-        Route::resource('books',BookController::class);
+        Route::resource('books',AdminBookController::class);
         Route::resource('categories', AdminCategoryController::class);
 
         // プロフィール編集ルート
         Route::get('/profile/edit', [AdminController::class, 'editProfile'])->name('profile.edit');
         Route::put('/profile/update', [AdminController::class, 'updateProfile'])->name('profile.update');
+
+        Route::get('/books/{book}/reviews', [ReviewManagementController::class, 'index'])->name('reviews.index');
+        Route::delete('/reviews/{review}', [ReviewManagementController::class, 'destroy'])->name('reviews.destroy');
     });
 
     // 管理者用パスワードリセットルート

@@ -30,11 +30,6 @@
 
         <!-- メインコンテンツ -->
         <main class="flex-grow container mx-auto py-8">
-            @if(session('success'))
-                <div class="bg-green-500 text-white p-4 rounded mb-6">
-                    {{ session('success') }}
-                </div>
-            @endif
             <h2 class="text-xl font-semibold mb-6">管理機能を選択してください</h2>
             <!-- ここにダッシュボードのコンテンツが表示されます -->
         </main>

@@ -1,20 +1,32 @@
 <?php
 namespace Database\Seeders;
 
+use App\Models\Category;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class CategorySeeder extends Seeder
 {
     public function run()
     {
-        $categories = [
-            ['name' => '英語', 'slug' => 'english'],
-            ['name' => '数学', 'slug' => 'mathematics'],
-            ['name' => '簿記', 'slug' => 'bookkeeping'],
-            ['name' => '税理士', 'slug' => 'tax-accountant'],
-        ];
+        Category::factory()->state([
+            'name' => 'english',
+            'slug' => Str::slug('english'),
+        ])->create();
 
-        DB::table('categories')->insert($categories);
+        Category::factory()->state([
+            'name' => 'mathematics',
+            'slug' => Str::slug('mathematics'),
+        ])->create();
+
+        Category::factory()->state([
+            'name' => 'bookkeeping',
+            'slug' => Str::slug('bookkeeping'),
+        ])->create();
+
+        Category::factory()->state([
+            'name' => 'tax-accountant',
+            'slug' => Str::slug('tax-accountant'),
+        ])->create();
     }
 }

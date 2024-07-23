@@ -8,12 +8,23 @@ use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
-class BookController extends Controller
+class AdminBookController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $books = Book::all();
-        return view('admin.books.index', compact('books'));
+        $category = $request->input('category');
+        $sort = $request->input('sort', 'updated_at');
+
+        $query = Book::query();
+
+        if ($category) {
+            $query->where('category_id', $category);
+        }
+
+        $books = $query->orderBy($sort)->get();
+        $categories = Category::all();
+
+        return view('admin.books.index', compact('books', 'categories'));
     }
 
     public function create()

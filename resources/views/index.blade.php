@@ -10,12 +10,17 @@
                 <div class="p-4">
                     <h3 class="text-lg font-semibold">{{ $book->title }}</h3>
                     <p class="text-gray-600 mt-2">¥{{ number_format($book->price, 2) }}</p>
-                    <form action="{{ route('cart.add', $book->id) }}" method="POST" class="mt-4">
-                        @csrf
-                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                            カートに入れる
-                        </button>
-                    </form>
+                    <div class="flex items-center justify-between">
+                        <a href="{{ route('books.show', $book->id) }}" class="mt-4 inline-block text-blue-500 hover:underline">詳細</a>
+                        <form action="{{ route('cart.add', $book->id) }}" method="POST" class="mt-4">
+                            @csrf
+                            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                カートに入れる
+                            </button>
+                        </form>
+                    </div>
+
+
                 </div>
             </div>
         @endforeach

@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\AdminUser;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
-
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\AdminUser>
  */
-class UserFactory extends Factory
+class AdominUserFactory extends Factory
 {
-    protected $model = User::class;
+    protected $model = AdminUser::class;
 
     /**
      * Define the model's default state.
@@ -27,8 +27,7 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => Hash::make('password'), // デフォルトパスワード
             'remember_token' => Str::random(10),
-            'phone' => $this->faker->phoneNumber, // 追加
-            'address' => $this->faker->address,   // 追加
         ];
+    }
     }
 }

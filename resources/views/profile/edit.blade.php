@@ -4,71 +4,41 @@
 <div class="container mx-auto px-4 py-8">
     <h2 class="text-2xl font-semibold mb-6">プロフィール編集</h2>
 
-    <section>
-        <header>
-            <h2 class="text-lg font-medium text-gray-900">
-                プロフィール情報
-            </h2>
+    <form method="POST" action="{{ route('profile.update') }}" class="space-y-6">
+        @csrf
+        @method('PATCH')
 
-            <p class="mt-1 text-sm text-gray-600">
-                アカウントのプロフィール情報とメールアドレスを更新します。
-            </p>
-        </header>
+        <div>
+            <x-input-label for="name" :value="__('Name')" />
+            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
+            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+        </div>
 
-        <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
-            @csrf
-            @method('patch')
+        <div>
+            <x-input-label for="email" :value="__('Email')" />
+            <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
+            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        </div>
 
-            <div>
-                <label for="name" class="block text-sm font-medium text-gray-700">名前</label>
-                <input id="name" name="name" type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" value="{{ old('name', Auth::user()->name) }}" required autofocus autocomplete="name">
-                @error('name')
-                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                @enderror
-            </div>
+        <div>
+            <x-input-label for="phone" :value="__('Phone')" />
+            <x-text-input id="phone" name="phone" type="text" class="mt-1 block w-full" :value="old('phone', $user->phone)" required autocomplete="phone" />
+            <x-input-error :messages="$errors->get('phone')" class="mt-2" />
+        </div>
 
-            <div>
-                <label for="email" class="block text-sm font-medium text-gray-700">メールアドレス</label>
-                <input id="email" name="email" type="email" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" value="{{ old('email', Auth::user()->email) }}" required autocomplete="username">
-                @error('email')
-                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                @enderror
+        <div>
+            <x-input-label for="address" :value="__('Address')" />
+            <x-text-input id="address" name="address" type="text" class="mt-1 block w-full" :value="old('address', $user->address)" required autocomplete="address" />
+            <x-input-error :messages="$errors->get('address')" class="mt-2" />
+        </div>
 
-                @if (Auth::user() instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! Auth::user()->hasVerifiedEmail())
-                    <div>
-                        <p class="text-sm mt-2 text-gray-800">
-                            メールアドレスは確認されていません。
+        <div class="flex items-center gap-4">
+            <x-primary-button>{{ __('Save') }}</x-primary-button>
 
-                            <button form="send-verification" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                確認メールを再送信するにはここをクリック
-                            </button>
-                        </p>
-
-                        @if (session('status') === 'verification-link-sent')
-                            <p class="mt-2 font-medium text-sm text-green-600">
-                                新しい確認リンクがメールアドレスに送信されました。
-                            </p>
-                        @endif
-                    </div>
-                @endif
-            </div>
-
-            <div class="flex items-center gap-4">
-                <button type="submit" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
-                    保存
-                </button>
-
-                @if (session('status') === 'profile-updated')
-                    <p
-                        x-data="{ show: true }"
-                        x-show="show"
-                        x-transition
-                        x-init="setTimeout(() => show = false, 2000)"
-                        class="text-sm text-gray-600"
-                    >保存されました。</p>
-                @endif
-            </div>
-        </form>
-    </section>
+            @if (session('status') === 'profile-updated')
+                <p class="text-sm text-gray-600">{{ __('Saved.') }}</p>
+            @endif
+        </div>
+    </form>
 </div>
 @endsection

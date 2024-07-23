@@ -15,6 +15,14 @@
                 <span class="block text-sm font-medium text-gray-700">メールアドレス:</span>
                 <span class="mt-1 block w-full">{{ Auth::user()->email }}</span>
             </div>
+            <div class="mb-4">
+                <span class="block text-sm font-medium text-gray-700">電話番号:</span>
+                <span class="mt-1 block w-full">{{ Auth::user()->phone }}</span>
+            </div>
+            <div class="mb-4">
+                <span class="block text-sm font-medium text-gray-700">住所:</span>
+                <span class="mt-1 block w-full">{{ Auth::user()->address }}</span>
+            </div>
             <div>
                 <a href="{{ route('profile.edit') }}" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
                     編集
