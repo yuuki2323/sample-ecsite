@@ -18,10 +18,10 @@ laravelを用いたecサイト
     -w /var/www/html \
     laravelsail/php82-composer:latest \
     composer install --ignore-platform-reqs
-```
-** .env 作成 **
-``` cp .env.example .env ```
-** Docker コンテナ・ビルド起動 **
+```  
+**.env 作成**  
+``` cp .env.example .env ```  
+**Docker コンテナ・ビルド起動**  
 - Dockerコンテナをバックグラウンドで起動します。
 ``` ./vendor/bin/sail up -d ```
 - アプリキー作成します。
@@ -39,12 +39,12 @@ laravelを用いたecサイト
 - シーダーの画像を表示するためにpublicフォルダのbook.pngをstorage/app/public/imagesフォルダを作りそこに移動させてください
 
 ## ブラウザ
-トップページ：http://localhost
+トップページ：http://localhost  
 管理者ページログイン：https://localhost/admin/login
 
 ユーザー
-'email' => test@example.com
-'password' = testpassword
-管理者ユーザー
-'email' = admintest@example.com
-'password' = testpassword
+'email' => test@example.com  
+'password' = testpassword  
+管理者ユーザー　　　　
+'email' = admintest@example.com  
+'password' = testpassword  
