@@ -36,7 +36,7 @@ laravelを用いたecサイト
 ``` npm run dev ```
 -シンボリックの設定します。
 ``` ./vendor/bin/sail artisan storage:link ```
-- シーダーの画像を表示するためにpublicフォルダのbook.pngをstorage/app/public/imagesに移動させてください
+- シーダーの画像を表示するためにpublicフォルダのbook.pngをstorage/app/public/imagesフォルダを作りそこに移動させてください
 
 ## ブラウザ
 トップページ：http://localhost

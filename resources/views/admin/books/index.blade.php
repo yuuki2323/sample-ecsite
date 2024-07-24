@@ -1,3 +1,10 @@
+「本の追加」ボタンを再度追加するために、ビューを以下のように更新します。
+
+### 更新されたビュー
+
+#### resources/views/admin/books/index.blade.php
+
+```blade
 @extends('layouts.admin')
 
 @section('content')
@@ -8,7 +15,7 @@
             <span class="block sm:inline">{{ session('success') }}</span>
         </div>
     @endif
-    <div class="bg-white shadow-md rounded-lg overflow-hidden">
+    <div class="flex justify-between items-center mb-4">
         <form method="GET" action="{{ route('admin.books.index') }}" class="p-4 flex gap-4">
             <div>
                 <label for="category" class="block text-sm font-medium text-gray-700">カテゴリー</label>
@@ -30,6 +37,9 @@
                 <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">フィルター</button>
             </div>
         </form>
+        <a href="{{ route('admin.books.create') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">本を追加</a>
+    </div>
+    <div class="bg-white shadow-md rounded-lg overflow-hidden">
         <table class="min-w-full bg-white">
             <thead>
                 <tr>

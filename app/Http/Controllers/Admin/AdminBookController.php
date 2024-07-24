@@ -17,11 +17,19 @@ class AdminBookController extends Controller
 
         $query = Book::query();
 
+        // カテゴリーフィルタ
         if ($category) {
             $query->where('category_id', $category);
         }
 
-        $books = $query->orderBy($sort)->get();
+        // 並び替え
+        if ($sort == 'title') {
+            $query->orderBy('title', 'asc');
+        } else {
+            $query->orderBy('updated_at', 'desc');
+        }
+
+        $books = $query->get();
         $categories = Category::all();
 
         return view('admin.books.index', compact('books', 'categories'));
