@@ -42,9 +42,11 @@ laravelを用いたecサイト
 トップページ：http://localhost  
 管理者ページログイン：https://localhost/admin/login
 
-ユーザー
+ユーザー  
+
 'email' => test@example.com  
 'password' = testpassword  
-管理者ユーザー　　　　　
+管理者ユーザー　　
+
 'email' = admintest@example.com  
 'password' = testpassword  
