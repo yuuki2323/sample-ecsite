@@ -10,7 +10,7 @@ laravelを用いたecサイト
 - tailwindcss
 
 ## 環境構築
-**windowsの方はUBUNTUを使う**
+**windowsの方はUBUNTUを使う**  
 **既存のアプリケーション用の Composer 依存関係のインストール**
 ``` docker run --rm \
     -u "$(id -u):$(id -g)" \
