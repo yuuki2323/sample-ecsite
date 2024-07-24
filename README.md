@@ -45,6 +45,6 @@ laravelを用いたecサイト
 ユーザー
 'email' => test@example.com  
 'password' = testpassword  
-管理者ユーザー　　　　
+管理者ユーザー　　　　　
 'email' = admintest@example.com  
 'password' = testpassword  
